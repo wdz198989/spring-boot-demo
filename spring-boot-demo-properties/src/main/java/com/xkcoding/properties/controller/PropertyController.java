@@ -22,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class PropertyController {
-	private final ApplicationProperty applicationProperty;
+
+  private final ApplicationProperty applicationProperty;
 	private final DeveloperProperty developerProperty;
 
 	@Autowired
@@ -33,6 +34,8 @@ public class PropertyController {
 
 	@GetMapping("/property")
 	public Dict index() {
-		return Dict.create().set("applicationProperty", applicationProperty).set("developerProperty", developerProperty);
-	}
+    Dict dict = Dict.create().set("applicationProperty", applicationProperty).set("developerProperty", developerProperty);
+    System.out.println(dict.filter("applicationProperty"));
+    return dict;
+  }
 }
