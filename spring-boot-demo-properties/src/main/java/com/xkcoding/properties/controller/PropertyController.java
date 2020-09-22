@@ -35,6 +35,7 @@ public class PropertyController {
 	@GetMapping("/property")
 	public Dict index() {
     Dict dict = Dict.create().set("applicationProperty", applicationProperty).set("developerProperty", developerProperty);
+
     System.out.println(dict.filter("applicationProperty"));
     return dict;
   }

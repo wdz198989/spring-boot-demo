@@ -1,8 +1,12 @@
 package com.xkcoding.helloworld;
 
 import cn.hutool.core.util.StrUtil;
+import io.micrometer.core.instrument.MeterRegistry;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,4 +45,16 @@ public class SpringBootDemoHelloworldApplication {
 		}
 		return StrUtil.format("Hello, {}!", who);
 	}
+
+  /**
+   *   注入bean
+   * @param applicationName
+   * @return
+   */
+  @Bean
+  MeterRegistryCustomizer<MeterRegistry> configurer(
+    @Value("${spring.application.name}") String applicationName) {
+    return (registry) -> registry.config().commonTags("application", applicationName);
+  }
 }
+
