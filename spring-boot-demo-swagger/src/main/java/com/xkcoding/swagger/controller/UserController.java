@@ -32,6 +32,12 @@ import java.util.List;
 @Api(tags = "1.0.0-SNAPSHOT", description = "用户管理", value = "用户管理")
 @Slf4j
 public class UserController {
+
+  @GetMapping(value = "/Curry")
+  public void Curry(){
+    System.out.println("库里上场打球了！！");
+  }
+
     @GetMapping
     @ApiOperation(value = "条件查询（DONE）", notes = "备注")
     @ApiImplicitParams({@ApiImplicitParam(name = "username", value = "用户名", dataType = DataType.STRING, paramType = ParamType.QUERY, defaultValue = "xxx")})

@@ -8,6 +8,7 @@ import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCusto
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,14 +26,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @modified: yangkai.shen
  */
 @SpringBootApplication
-@RestController
+//@RestController
 public class SpringBootDemoHelloworldApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDemoHelloworldApplication.class, args);
 	}
 
-	/**
+	/**rr
 	 * Hello，World
 	 *
 	 * @param who 参数，非必须
@@ -46,15 +47,20 @@ public class SpringBootDemoHelloworldApplication {
 		return StrUtil.format("Hello, {}!", who);
 	}
 
+/*	@RequestMapping(value = "/Curry")
+  public void Curry(){
+    System.out.println("库里上场打球了！！");
+  }*/
+
   /**
-   *   注入bean
+   *   注入bean（不注入，貌似也可以实现）
    * @param applicationName
    * @return
    */
-  @Bean
+ /* @Bean
   MeterRegistryCustomizer<MeterRegistry> configurer(
     @Value("${spring.application.name}") String applicationName) {
     return (registry) -> registry.config().commonTags("application", applicationName);
-  }
+  }*/
 }
 
